@@ -24,7 +24,7 @@ export default function Dashboard() {
 
     try {
       const contactsRes = await fetch(
-        `https://longobuccodev.com.br/api/contact-book/contact/user/${payload.sub}?page=${page}&size=${size}`, 
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/user/${payload.sub}?page=${page}&size=${size}`, 
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )
       setContacts(await contactsRes.json())
@@ -66,7 +66,7 @@ export default function Dashboard() {
         <button onClick={nextPage} className="bg-cyan-700 text-white px-4 py-2 rounded cursor-pointer">Avançar</button>
       </div>
       {
-        contacts ? <ListContacts contacts={contacts} /> : <ListContacts/>
+        contacts ? <ListContacts contacts={contacts || []} /> : <ListContacts/>
       }
     </main>
   )

@@ -52,8 +52,8 @@ export function ContactItem({ contact, onDelete }: { contact: Contact; onDelete:
     return (
         <div className="flex justify-between flex-1">
             <div className={`flex border-b w-1/2 ${roboto.className}`}>
-                <p className="text-[20px] w-72 text-cyan-900">{contact.name}:</p>
-                <p className="text-[20px] text-cyan-900">{formatedNumber} {contact.number.slice(2)}</p>
+                <p className="text-[18px] w-72 text-cyan-900">{contact.name}:</p>
+                <p className="text-[16px] text-cyan-900">{formatedNumber} {contact.number.slice(2)}</p>
             </div>
             <div className="flex gap-4 border-b">
                 <Link className="flex items-center justify-center" href={`/update/${contact.id}`}><Edit color="#164E63"/></Link>

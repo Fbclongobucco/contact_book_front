@@ -32,15 +32,19 @@ export function Login() {
         body: JSON.stringify(data),
       });
 
+      console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
+      console.log("Dados enviados:", data);
+
+
       if (!response.ok) throw new Error("Credenciais inválidas");
 
-      const tokens = await response.json(); 
+      const tokens = await response.json();
 
       Cookies.set("accessToken", tokens.accessToken, { secure: true, sameSite: "strict" });
       Cookies.set("refreshToken", tokens.refreshToken, { secure: true, sameSite: "strict" });
 
-      reset(); 
-      router.push("/dashboard"); 
+      reset();
+      router.push("/dashboard");
     } catch (err) {
       console.error("Erro no login:", err);
       alert("Falha ao logar, verifique email e senha.");
@@ -55,7 +59,7 @@ export function Login() {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12">
           <div className="h-28 flex flex-col mt-11">
-            <Input {...register("email")} placeholder="digite seu email..." className="italic h-14 bg-zinc-200 !text-[19px] text-cyan-950 font-semibold"/>
+            <Input {...register("email")} placeholder="digite seu email..." className="italic h-14 bg-zinc-200 !text-[19px] text-cyan-950 font-semibold" />
             <div className="h-6 text-sm text-red-400">{errors.email?.message}</div>
             <Input {...register("password")} type="password" placeholder="digite sua senha..." className="italic bg-zinc-200 h-14 !text-[19px] text-cyan-950 font-semibold" />
             <div className="h-6 text-sm text-red-400">{errors.password?.message}</div>
