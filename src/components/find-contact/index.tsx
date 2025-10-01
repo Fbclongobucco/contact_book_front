@@ -50,7 +50,6 @@ export function FindContact() {
     }
   }, [router]);
 
-  /** Debounce para evitar requisições a cada tecla */
   useEffect(() => {
     if (!query.trim()) {
       setContacts([]);
@@ -64,7 +63,6 @@ export function FindContact() {
     return () => clearTimeout(timeout);
   }, [query, fetchContacts]);
 
-  /** Seleciona um contato da lista */
   const handleSelect = (id: string) => {
     const contact = contacts.find((c) => String(c.id) === id);
     if (!contact) return;
@@ -75,7 +73,6 @@ export function FindContact() {
     setCardVisible(true);
   };
 
-  /** Fecha o card do contato selecionado */
   const handleCloseCard = () => {
     setCardVisible(false);
     setSelectedContact(null);
@@ -83,7 +80,6 @@ export function FindContact() {
 
   return (
     <div className="w-full p-3 shadow-2xl bg-zinc-100 rounded-lg flex flex-col gap-3 text-md font-extrabold relative">
-      {/* Campo de busca */}
       <div className="flex justify-end items-center gap-3 relative w-full">
         <p className="text-cyan-950 text-lg">Busque um contato:</p>
         <div className="relative w-1/3">
@@ -97,7 +93,6 @@ export function FindContact() {
             placeholder="Digite o nome..."
           />
 
-          {/* Lista flutuante */}
           {contacts.length > 0 && (
             <ul className="absolute left-0 right-0 mt-1 bg-white border border-cyan-950 rounded-md shadow-md z-50">
               {contacts.map((item) => (
@@ -116,11 +111,9 @@ export function FindContact() {
         </div>
       </div>
 
-      {/* Status */}
       {loading && <p className="text-cyan-900">🔄 Buscando...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
-      {/* Card do contato selecionado */}
       {selectedContact && cardVisible && (
         <div className="p-1 bg-white border border-cyan-950 rounded-md shadow-md w-1/3 ml-auto mr-[34px] flex gap-16">
           <div>
