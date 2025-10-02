@@ -18,7 +18,6 @@ const firaSans = Fira_Sans({
 
 export function Header() {
     const router = useRouter()
-
     const [userData, setUserData] = useState<User | null>(null)
 
     useEffect(() => {
@@ -32,7 +31,6 @@ export function Header() {
                 const userRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${payload.sub}`, {
                     headers: { Authorization: `Bearer ${accessToken}` },
                 })
-
                 setUserData(await userRes.json())
             } catch (err) {
                 console.error(err)
@@ -45,7 +43,6 @@ export function Header() {
         fetchData()
     }, [router])
 
-
     const logout = () => {
         Cookies.remove("accessToken")
         Cookies.remove("refreshToken")
@@ -53,21 +50,29 @@ export function Header() {
     }
 
     return (
-        <header className={`w-full ${roboto.className}`}>
-            <div className="flex w-96 h-28 bg-cyan-600  p-1 md:w-full justify-between items-center">
-                <div className="w-96 ">
-                    <p className="font-bold text-zinc-100 text-sm sm:text-[24px] pl-4">Olá, {userData?.name}!</p>
+        <header className={`w-full h-28 bg-cyan-600 ${roboto.className}`}>
+            <div className="w-full h-full lg:w-full mx-auto px-4 flex justify-between items-center">
+                <div className="flex-1">
+                    <p className="font-bold text-zinc-100 text-sm sm:text-lg md:text-xl lg:text-2xl">
+                        Olá, {userData?.name}!
+                    </p>
                 </div>
-                <div className="hidden md:flex justify-center">
-                    <h2 className={`text-amber-500 text-3xl font-extrabold ${firaSans.className}`}>CONTACT <span className="text-cyan-950  font-extrabold">BOOK</span></h2>
+                
+                <div className="flex-1 justify-center hidden sm:flex">
+                    <h2 className={`text-amber-500 text-xl sm:text-2xl md:text-3xl font-extrabold ${firaSans.className}`}>
+                        CONTACT <span className="text-cyan-950 font-extrabold">BOOK</span>
+                    </h2>
                 </div>
-                <div className="w-96 flex justify-end">
-                    <button className="bg-cyan-950 px-5 py-1 mx-4 rounded text-zinc-100 cursor-pointer" onClick={logout}>
+                
+                <div className="flex-1 flex justify-end">
+                    <button 
+                        className="bg-cyan-950 px-4 py-2 sm:px-5 sm:py-2 rounded text-zinc-100 cursor-pointer hover:bg-cyan-900 transition-colors text-sm sm:text-base"
+                        onClick={logout}
+                    >
                         sair
                     </button>
                 </div>
             </div>
-
         </header>
     )
 }

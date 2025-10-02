@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState, useCallback } from "react";
 import { Input } from "../ui/input";
 import { Contact } from "@/types/contacts";
@@ -18,7 +17,6 @@ export function FindContact() {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [cardVisible, setCardVisible] = useState(false);
 
-  /** Busca contatos do usuário logado */
   const fetchContacts = useCallback(async (search: string) => {
     const token = Cookies.get("accessToken");
     if (!token) {
@@ -79,10 +77,10 @@ export function FindContact() {
   };
 
   return (
-    <div className="w-full p-3 shadow-2xl bg-zinc-100 rounded-lg flex flex-col gap-3 text-md font-extrabold relative">
-      <div className="flex justify-end items-center gap-3 relative w-full">
+    <div className="w-full p-4 shadow-xl bg-zinc-100 rounded-lg flex flex-col gap-3 text-md font-extrabold relative">
+      <div className="flex flex-col sm:flex-row justify-start sm:justify-end items-start sm:items-center gap-3 w-full">
         <p className="text-cyan-950 text-lg">Busque um contato:</p>
-        <div className="relative w-1/3">
+        <div className="relative w-full sm:w-1/2 lg:w-1/3">
           <Input
             value={query}
             onChange={(e) => {
@@ -94,7 +92,7 @@ export function FindContact() {
           />
 
           {contacts.length > 0 && (
-            <ul className="absolute left-0 right-0 mt-1 bg-white border border-cyan-950 rounded-md shadow-md z-50">
+            <ul className="absolute left-0 right-0 mt-1 bg-white border border-cyan-950 rounded-md shadow-md z-50 max-h-60 overflow-y-auto">
               {contacts.map((item) => (
                 <li key={item.id}>
                   <button
@@ -115,7 +113,7 @@ export function FindContact() {
       {error && <p className="text-red-600">{error}</p>}
 
       {selectedContact && cardVisible && (
-        <div className="p-1 bg-white border border-cyan-950 rounded-md shadow-md w-1/3 ml-auto mr-[34px] flex gap-16">
+        <div className="p-3 bg-white border border-cyan-950 rounded-md shadow-md w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 ml-auto flex justify-between items-center">
           <div>
             <p className="text-cyan-900 text-sm font-bold">
               {selectedContact.name}
@@ -124,9 +122,9 @@ export function FindContact() {
           </div>
           <button
             onClick={handleCloseCard}
-            className="bg-zinc-300 p-1 rounded hover:bg-zinc-400 self-start ml-5"
+            className="bg-zinc-300 p-1 rounded hover:bg-zinc-400 transition-colors"
           >
-            <X  size={12}/>
+            <X size={16}/>
           </button>
         </div>
       )}

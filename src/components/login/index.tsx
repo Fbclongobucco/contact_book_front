@@ -32,8 +32,6 @@ export function Login() {
         body: JSON.stringify(data),
       });
 
-      console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
-      console.log("Dados enviados:", data);
 
 
       if (!response.ok) throw new Error("Credenciais inválidas");
@@ -52,16 +50,16 @@ export function Login() {
   };
 
   return (
-    <Card className="w-[400px] h-[500px] bg-gradient-to-b from-cyan-200 to-zinc-50 flex justify-start shadow-2xl">
+    <Card className="sm:w-[400px] sm:h-[500px] w-[350px]  bg-gradient-to-b from-cyan-200 to-zinc-50 flex justify-start shadow-2xl">
       <CardHeader>
         <CardTitle className="self-center text-[26px]">Bem vindo ao <span className="text-cyan-800">Contact Book</span></CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12">
           <div className="h-28 flex flex-col mt-11">
-            <Input {...register("email")} placeholder="digite seu email..." className="italic h-14 bg-zinc-200 !text-[19px] text-cyan-950 font-semibold" />
+            <Input {...register("email")} placeholder="digite seu email..." className="h-14 bg-zinc-200 !text-[19px] text-cyan-950" />
             <div className="h-6 text-sm text-red-400">{errors.email?.message}</div>
-            <Input {...register("password")} type="password" placeholder="digite sua senha..." className="italic bg-zinc-200 h-14 !text-[19px] text-cyan-950 font-semibold" />
+            <Input {...register("password")} type="password" placeholder="digite sua senha..." className="bg-zinc-200 h-14 !text-[19px] text-cyan-950" />
             <div className="h-6 text-sm text-red-400">{errors.password?.message}</div>
           </div>
           <div className="flex justify-center flex-col">

@@ -4,7 +4,6 @@ import { ContactItem } from "../contact";
 import { useState, useEffect } from "react";
 
 export function ListContacts({ contacts }: { contacts?: Contact[] }) {
-
     const [contactList, setContactList] = useState<Contact[]>([]);
 
     useEffect(() => {
@@ -13,13 +12,12 @@ export function ListContacts({ contacts }: { contacts?: Contact[] }) {
         }
     }, [contacts]); 
 
-
     function handleDelete(id: number) {
         setContactList(prev => prev.filter(c => c.id !== id));
     }
 
     return (
-        <div className="w-[1000px] p-3 shadow-2xl bg-zinc-100 rounded-lg font-bold flex flex-col gap-5">
+        <div className="w-full max-w-6xl p-4 shadow-xl bg-zinc-100 rounded-lg font-bold flex flex-col gap-5">
             {contactList.map(item => (
                 <ContactItem 
                     key={item.id} 

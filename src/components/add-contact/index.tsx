@@ -9,7 +9,6 @@ import Cookies from "js-cookie"
 import { TokenPayload } from "@/types/token-payload";
 import { jwtDecode } from "jwt-decode";
 
-
 const schema = z.object({
     name: z.string().min(3, "o nome do contato deve ter pelo menos 3 letras").max(100, "o nome do contato deve ter até 100 letras"),
     number: z.string()
@@ -19,9 +18,7 @@ const schema = z.object({
 })
 
 export function AddContact({ onContactAdded }: { onContactAdded: () => void }) {
-
     type FormInputs = z.infer<typeof schema>
-
 
     const {
         register,
@@ -32,18 +29,14 @@ export function AddContact({ onContactAdded }: { onContactAdded: () => void }) {
         defaultValues: { name: "", number: "" },
     })
 
-
-
     const [enable, setEnable] = useState(false)
     const accessToken = Cookies.get("accessToken")
-
 
     function setVisible() {
         setEnable(!enable)
     }
 
     async function submitForm(data: FormInputs) {
-
         if (!accessToken) return
 
         const payload: TokenPayload = jwtDecode<TokenPayload>(accessToken)
@@ -68,24 +61,24 @@ export function AddContact({ onContactAdded }: { onContactAdded: () => void }) {
             setEnable(!enable)
             alert("contato criado com sucesso!")
             reset({ name: "", number: "" })
-
             onContactAdded()
 
         } catch (error) {
             console.log(error)
         }
-
     }
 
     return (
-        <div className="bg-white rounded-2xl w-2/4 mr-2 flex justify-center items-center relative">
-            <Button disabled={enable} className="text-lg font-extrabold text-cyan-950 cursor-pointer" onClick={setVisible} variant="outline">Adicionar contato <Plus /> </Button>
-            <div className={`absolute w-[450px] h-48 bg-white top-20 z-50 rounded-2xl p-2 justify-center flex-col ${enable ? "flex" : "hidden"}`}>
-                <button className="self-end border m-1 cursor-pointer" onClick={()=> setEnable(false)}><X/></button>
-                <form onSubmit={handleSubmit((submitForm))} className="flex flex-col">
-                    <Input {...register("name")} placeholder="Nome"  className="text-cyan-900 font-bold placeholder:text-zinc-400 autofill:bg-white autofill:text-cyan-900" />
+        <div className="bg-white rounded-2xl w-full lg:w-1/2 flex justify-center items-center relative">
+            <Button disabled={enable} className="text-lg font-extrabold text-cyan-950 cursor-pointer w-full h-full py-4" onClick={setVisible} variant="outline">
+                Adicionar contato <Plus /> 
+            </Button>
+            <div className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:absolute lg:top-full lg:left-0 lg:transform-none lg:translate-x-0 lg:translate-y-0 w-[90vw] max-w-md lg:w-[450px] h-fit min-h-[200px] bg-white lg:mt-2 z-50 rounded-2xl p-4 flex flex-col shadow-2xl ${enable ? "flex" : "hidden"}`}>
+                <button className="self-end cursor-pointer mb-2" onClick={()=> setEnable(false)}><X/></button>
+                <form onSubmit={handleSubmit((submitForm))} className="flex flex-col gap-2">
+                    <Input {...register("name")} placeholder="Nome" className="text-cyan-900 font-bold placeholder:text-zinc-400" />
                     <div className="h-5">{errors.name?.message && <p className="text-red-500 text-sm" >{errors.name.message}</p>}</div>
-                    <Input {...register("number")} placeholder="Número" className="text-cyan-900 font-bold placeholder:text-zinc-400 autofill:bg-white autofill:text-cyan-900" />
+                    <Input {...register("number")} placeholder="Número" className="text-cyan-900 font-bold placeholder:text-zinc-400" />
                     <div className="h-5">{errors.number?.message && <p className="text-red-500 text-sm" >{errors.number.message}</p>}</div>
                     <Button disabled={!!errors.name?.message || !!errors.number?.message} variant="outline" className="text-cyan-50 font-extrabold bg-cyan-700 cursor-pointer hover:bg-cyan-900 hover:text-cyan-200">salvar</Button>
                 </form>

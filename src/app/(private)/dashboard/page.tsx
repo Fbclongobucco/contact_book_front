@@ -44,30 +44,29 @@ export default function Dashboard() {
   const prevPage = () => setPage(prev => (prev > 1 ? prev - 1 : 1))
 
   return (
-    <main className="w-full h-[calc(100vh-112px)] bg-gradient-to-b from-cyan-200 to-zinc-300 flex flex-col items-center gap-2">
-      <div className="m-3 w-[1000px] flex justify-between flex-col gap-2">
+    <main className="w-full h-[calc(100vh-7rem)] bg-gradient-to-b from-cyan-200 to-zinc-300 flex flex-col items-center gap-4 py-4 px-2">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-wrap justify-between items-center lg:items-stretch gap-4">
         <Profile />
-        <div className="flex">
+        <div className="w-full lg:w-auto flex flex-col sm:flex-row gap-2">
           <AddContact onContactAdded={fetchContacts} />
           <FindContact />
         </div>
       </div>
-      <div className="flex gap-4 mt-4 w-[1000px] justify-between">
-        <button onClick={prevPage} disabled={page === 1} className="bg-cyan-700 text-white px-4 py-2 rounded disabled:opacity-50 cursor-pointer">Voltar</button>
-        <span className="self-center text-cyan-950">Página {page}</span>
+      
+      <div className="flex flex-wrap  gap-4 mt-4 w-full max-w-6xl justify-center sm:justify-between items-center">
+        <button onClick={prevPage} disabled={page === 1} className="bg-cyan-700 text-white px-4 py-2 rounded disabled:opacity-50 cursor-pointer hover:bg-cyan-800 transition-colors">Voltar</button>
+        <span className="text-cyan-950 font-medium hidden sm:block">Página {page}</span>
         <select
           value={size}
           onChange={(e) => setSize(Number(e.target.value))}
-          className="border border-zinc-400 rounded px-2 py-1 bg-cyan-700 text-zinc-200"
+          className="border border-zinc-400 rounded px-2 py-1 bg-cyan-700 text-zinc-200 cursor-pointer"
         >
           <option value={5}>5 por página</option>
           <option value={10}>10 por página</option>
         </select>
-        <button onClick={nextPage} className="bg-cyan-700 text-white px-4 py-2 rounded cursor-pointer">Avançar</button>
+        <button onClick={nextPage} className="bg-cyan-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-cyan-800 transition-colors">Avançar</button>
       </div>
-      {
-        contacts ? <ListContacts contacts={contacts || []} /> : <ListContacts/>
-      }
+      {contacts ? <ListContacts contacts={contacts || []} /> : <ListContacts/>}
     </main>
   )
 }

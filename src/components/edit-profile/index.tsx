@@ -95,10 +95,10 @@ export function EditProfile() {
     }
 
     return (
-        <div>
+        <div className="w-full mx-1 sm:flex justify-center items-center my-4">
             <form
                 onSubmit={handleSubmit(registerFormSubmit)}
-                className="w-[560px] h-[600px] bg-white p-3 flex justify-center items-center flex-col rounded-2xl gap-5"
+                className="sm:w-[560px] sm:h-[600px] w-full bg-white p-5 flex justify-center items-center flex-col rounded-2xl gap-5"
             >
                 <h2 className="text-center text-cyan-950 font-bold text-2xl">
                     Atualizar usuário
@@ -107,7 +107,7 @@ export function EditProfile() {
                 <Label className="text-left w-full text-cyan-950 font-semibold" htmlFor="name">
                     NOME
                 </Label>
-                <Input className="text-lg text-cyan-950 font-semibold" {...register("name")} />
+                <Input className="lg:text-3xl md:text-3xl text-cyan-950 font-semibold" {...register("name")} />
                 <div className="h-6 p-2">
                     {errors.name?.message && <p className="text-sm text-red-400">{errors.name.message}</p>}
                 </div>
@@ -115,7 +115,7 @@ export function EditProfile() {
                 <Label className="text-left w-full text-cyan-950 font-semibold" htmlFor="cpf">
                     CPF
                 </Label>
-                <Input className="text-lg text-cyan-950 font-semibold" {...register("cpf")} />
+                <Input className="lg:text-lg  text-cyan-950 font-semibold" {...register("cpf")} />
                 <div className="h-6 p-2">
                     {errors.cpf?.message && <p className="text-sm text-red-400">{errors.cpf.message}</p>}
                 </div>
