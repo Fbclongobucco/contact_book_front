@@ -13,7 +13,7 @@ const schema = z.object({
         .min(1, "o numero deve conter 11 dígitos")
         .max(11, "o numero deve conter 11 dígitos")
         .regex(/^\d+$/, "O número deve conter apenas dígitos"),
-    email: z.email("email inválido"),
+    email: z.email("email inválido").transform((val) => val.toLowerCase()),
     password: z.string().min(6, "A senha deve conter pelo menos 6 caracteres"),
     repeatPassword: z.string().min(6, "A senha deve conter pelo menos 6 caracteres"),
     birthday: z.string()

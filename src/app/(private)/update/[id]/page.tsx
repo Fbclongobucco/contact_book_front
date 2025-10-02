@@ -1,11 +1,12 @@
 "use client"
 import { useParams, useRouter } from "next/navigation"
-import { useEffect} from "react"
+import { useEffect } from "react"
 import Cookies from "js-cookie"
 import z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 const schema = z.object({
     name: z.string().min(1, "O nome é obrigatório"),
@@ -17,7 +18,7 @@ const schema = z.object({
 
 export default function UpdateContact() {
     type FormInputs = z.infer<typeof schema>
-  
+
     const params = useParams()
     const accessToken = Cookies.get("accessToken")
     const router = useRouter()
@@ -46,8 +47,8 @@ export default function UpdateContact() {
                 )
 
                 const data = await contactsRes.json()
-             
-                reset({ name: data.name, number: data.number }) 
+
+                reset({ name: data.name, number: data.number })
             } catch (err) {
                 console.error(err)
                 alert("falha ao atualizar")
@@ -73,7 +74,7 @@ export default function UpdateContact() {
             )
             alert("Contato atualizado com sucesso!")
             router.push("/dashboard")
-            
+
         } catch (err) {
             console.error(err)
         }
@@ -100,13 +101,15 @@ export default function UpdateContact() {
                             <p className="text-red-500 text-sm">{errors.number.message}</p>
                         )}
                     </div>
-
-                    <button
-                        className="px-7 py-2.5 bg-cyan-950 text-zinc-200 font-bold rounded-md hover:bg-cyan-800"
-                        type="submit"
-                    >
-                        Atualizar
-                    </button>
+                    <div className="flex justify-between items-center w-3/5 self-end gap-4">
+                        <button
+                            className="px-7 py-2.5 bg-cyan-950 text-zinc-200 font-bold rounded-md hover:bg-cyan-800"
+                            type="submit"
+                        >
+                            Atualizar
+                        </button>
+                        <Link className="underline font-bold text-lg text-cyan-950" href="/dashboard" >voltar</Link>
+                    </div>
                 </form>
             </div>
         </main>

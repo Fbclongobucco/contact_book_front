@@ -66,11 +66,10 @@ export function Login() {
           </div>
           <div className="flex justify-center flex-col">
             <Button type="submit" className="w-full cursor-pointer text-lg">login</Button>
-            <Link className="text-sm self-end" href="/password-forgot">esqueceu a senha?</Link>
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex justify-center">
+      <CardFooter className="flex justify-center mt-7">
         <Link className="italic underline font-bold text-sm text-cyan-900" href="/register">AINDA NÃO TEM CADASTRO? FAÇA AGORA!</Link>
       </CardFooter>
     </Card>
