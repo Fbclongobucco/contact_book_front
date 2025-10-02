@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+  trailingSlash: true,
+  basePath: '/contact-book',
+  assetPrefix: '/contact-book/',
+  // Remova ou comente a linha abaixo:
+  // experimental: {
+  //   optimizeCss: true,
+  // },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = nextConfig
