@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📒 Contact Book - Full Stack Application
 
-## Getting Started
+Uma aplicação completa de agenda de contatos desenvolvida com **Next.js** no frontend e **NestJS** no backend.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Frontend
+- **Next.js 14** - React framework
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **Lucide React** - Ícones
+- **js-cookie** - Gerenciamento de cookies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Backend
+- **NestJS** - Framework Node.js
+- **TypeScript** - Tipagem estática
+- **JWT** - Autenticação
+- **TypeOrm** - ORM Database
+- **PostgreSQL** - Banco de dados
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 Funcionalidades
 
-## Learn More
+- ✅ Cadastro de usuários
+- ✅ Login e autenticação JWT
+- ✅ CRUD completo de contatos
+- ✅ Interface responsiva
+- ✅ Busca de contatos
+- ✅ Paginação de resultados
+- ✅ Validação de dados
 
-To learn more about Next.js, take a look at the following resources:
+## ⚠️ Importante: Aplicação de Testes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Esta é uma aplicação para fins de teste e desenvolvimento. Não utilize dados reais!**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🚫 **NÃO USE** emails pessoais ou profissionais
+- 🚫 **NÃO USE** números de telefone reais
+- 🚫 **NÃO USE** informações pessoais sensíveis
+- ✅ **USE** dados fictícios para testes
+- ✅ **USE** emails temporários
+- ✅ **USE** números de telefone fake
 
-## Deploy on Vercel
+## 🔗 Links da Aplicação
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🌐 Deploy
+**ACESSE A APLICAÇÃO EM:** `https://longobuccodev.com.br/contact-book`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Backend (api):** `https://longobuccodev.com.br/api/contact-book/`
+
+### 📚 Repositórios
+**Frontend:** `https://github.com/Fbclongobucco/contact_book_front.git`
+
+**Backend:** `https://github.com/Fbclongobucco/contact_book_backend.git`
+
+## 🛠️ Instalação e Desenvolvimento
+
+### Pré-requisitos
+- Node.js 18+
+- npm ou yarn
+- PostgreSQL
+
+
