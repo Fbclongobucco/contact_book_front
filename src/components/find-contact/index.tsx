@@ -113,16 +113,16 @@ export function FindContact() {
       {error && <p className="text-red-600">{error}</p>}
 
       {selectedContact && cardVisible && (
-        <div className="p-3 bg-white border border-cyan-950 rounded-md shadow-md w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 ml-auto flex justify-between items-center">
+        <div className="p-3 bg-white border border-cyan-950 rounded-md shadow-md w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 ml-auto flex justify-between items-center sm:absolute sm:top-20 sm:right-4">
           <div>
-            <p className="text-cyan-900 text-sm font-bold">
+            <p className="text-cyan-900 sm:text-lg font-bold">
               {selectedContact.name}
             </p>
-            <p className="text-cyan-800 text-sm">{selectedContact.number}</p>
+            <p className="text-cyan-800 text-sm sm:text-lg">{`(${selectedContact.number.slice(0,2)})${selectedContact.number.substring(2)}`}</p>
           </div>
           <button
             onClick={handleCloseCard}
-            className="bg-zinc-300 p-1 rounded hover:bg-zinc-400 transition-colors"
+            className="bg-zinc-300 p-1 rounded hover:bg-zinc-400 transition-colors cursor-pointer sm:mb-6"
           >
             <X size={16}/>
           </button>

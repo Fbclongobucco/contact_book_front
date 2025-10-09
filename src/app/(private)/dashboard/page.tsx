@@ -53,18 +53,18 @@ export default function Dashboard() {
         </div>
       </div>
       
-      <div className="flex flex-wrap  gap-4 mt-4 w-full max-w-6xl justify-center sm:justify-between items-center">
-        <button onClick={prevPage} disabled={page === 1} className="bg-cyan-700 text-white px-4 py-2 rounded disabled:opacity-50 cursor-pointer hover:bg-cyan-800 transition-colors">Voltar</button>
+      <div className="flex  gap-4 mt-4 w-full max-w-6xl justify-around sm:justify-between items-center">
+        <button onClick={prevPage} disabled={page === 1} className="bg-cyan-700 text-white text-[12px] p-1 sm:px-4 sm:py-2 sm:text-[16px] rounded disabled:opacity-50 cursor-pointer hover:bg-cyan-800 transition-colors">Voltar</button>
         <span className="text-cyan-950 font-medium hidden sm:block">Página {page}</span>
         <select
           value={size}
           onChange={(e) => setSize(Number(e.target.value))}
-          className="border border-zinc-400 rounded px-2 py-1 bg-cyan-700 text-zinc-200 cursor-pointer"
+          className="border border-zinc-400 rounded text-[12px] p-1 sm:px-4 sm:py-2 sm:text-[16px] bg-cyan-700 text-zinc-200 cursor-pointer"
         >
           <option value={5}>5 por página</option>
           <option value={10}>10 por página</option>
         </select>
-        <button onClick={nextPage} className="bg-cyan-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-cyan-800 transition-colors">Avançar</button>
+        <button onClick={nextPage} className="bg-cyan-700 text-white text-[12px] p-1 sm:px-4 sm:py-2 sm:text-[16px] rounded cursor-pointer hover:bg-cyan-800 transition-colors">Avançar</button>
       </div>
       {contacts ? <ListContacts contacts={contacts || []} /> : <ListContacts/>}
     </main>
