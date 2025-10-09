@@ -44,7 +44,7 @@ export default function Dashboard() {
   const prevPage = () => setPage(prev => (prev > 1 ? prev - 1 : 1))
 
   return (
-    <main className="w-full h-[calc(100vh-7rem)] bg-gradient-to-b from-cyan-200 to-zinc-300 flex flex-col items-center gap-4 py-4 px-2">
+    <main className="w-full min-h-[calc(100vh-7rem)]   bg-gradient-to-b from-cyan-200 to-zinc-300 flex flex-col items-center gap-4 py-4 px-2">
       <div className="w-full max-w-6xl flex flex-col lg:flex-wrap justify-between items-center lg:items-stretch gap-4">
         <Profile />
         <div className="w-full lg:w-auto flex flex-col sm:flex-row gap-2">
