@@ -73,7 +73,7 @@ export function FormRegister() {
       Cookies.set("accessToken", accessToken)
       Cookies.set("refreshToken", refreshToken)
       
-      router.push("/dashboard")
+      router.push("/")
     } catch (error) {
       console.error(error)
       setError("root", { message: "Erro ao realizar cadastro" })
